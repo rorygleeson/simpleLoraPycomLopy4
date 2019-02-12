@@ -11,10 +11,10 @@ from machine import ADC
 def adc_battery():
     
 	adc = ADC(0)                                        # initialise adc hardware    
-	adc_c = adc.channel(attn=3, pin='P16')              # create an object to sample ADC on pin 16 with attenuation of 11db (config 3)    
+	adc_c = adc.channel(attn=3, pin='P16') 				# create an object to sample ADC on pin 16 with attenuation of 11db (config 3) 
 	adc_samples = []                                    # initialise the list    
 	for count in range(100):                            # take 100 samples and append them into the list
-		adc_samples.append(int(adc_c()))    
+		adc_samples.append(int(adc_c())) 
 
 	adc_samples = sorted(adc_samples)                   # sort the list    
 	adc_median = adc_samples[int(len(adc_samples)/2)]   # take the center list row value (median average)
@@ -38,8 +38,8 @@ lora = LoRa(mode=LoRa.LORAWAN, region=LoRa.AS923)
 
 
 # access info
-app_eui = binascii.unhexlify('XXXXXXXXXXXXXXXX')
-app_key = binascii.unhexlify('BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB')
+app_eui = binascii.unhexlify('xxxxxxxxxxxxxxxx')								 # copy from TTN account  
+app_key = binascii.unhexlify('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')						 # copy from TTN account  
 
 # attempt join - continues attempts background
 lora.join(activation=LoRa.OTAA, auth=(app_eui, app_key), timeout=0)
@@ -102,4 +102,4 @@ while count <= 200:
 		pycom.rgbled(0x007f00)
 
 	count += 1
-	utime.sleep(10)	
+	utime.sleep(10)
