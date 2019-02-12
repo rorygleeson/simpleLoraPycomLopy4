@@ -38,8 +38,8 @@ lora = LoRa(mode=LoRa.LORAWAN, region=LoRa.AS923)
 
 
 # access info
-app_eui = binascii.unhexlify('70B3D57ED001724A')
-app_key = binascii.unhexlify('CE79ED59CE873BB30FAD5842DD1A845B')
+app_eui = binascii.unhexlify('70B222222221724A')
+app_key = binascii.unhexlify('CE79ED59RRRRRRRRRRAD5842DD1A845B')
 
 # attempt join - continues attempts background
 lora.join(activation=LoRa.OTAA, auth=(app_eui, app_key), timeout=0)
